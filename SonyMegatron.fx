@@ -88,15 +88,15 @@ uniform float HCRT_HDR                             <ui_type = "drag"; ui_min = 0
 uniform float HCRT_OUTPUT_COLOUR_SPACE             <ui_type = "drag"; ui_min = 0.0; ui_max = 2.0;     ui_step = 1.0;  ui_label = "SDR: Display's Colour Space: r709 | sRGB | DCI-P3";> = 1.0;
 uniform float HCRT_MAX_NITS                        <ui_type = "drag"; ui_min = 0.0; ui_max = 10000.0; ui_step = 10.0; ui_label = "HDR: Display's Peak Luminance";> = 700.0;
 uniform float HCRT_PAPER_WHITE_NITS                <ui_type = "drag"; ui_min = 0.0; ui_max = 10000.0; ui_step = 10.0; ui_label = "HDR: Display's Paper White Luminance";> = 700.0;
-uniform float HCRT_EXPAND_GAMUT                    <ui_type = "drag"; ui_min = 0.0; ui_max = 1.0;     ui_step = 1.0;  ui_label = "HDR: Original/Vivid";> = 0.0;
+uniform float HCRT_EXPAND_GAMUT                    <ui_type = "drag"; ui_min = 0.0; ui_max = 1.0;     ui_step = 1.0;  ui_label = "HDR: Original/Vivid";> = 1.0;
 uniform float HCRT_LCD_RESOLUTION                  <ui_type = "drag"; ui_min = 0.0; ui_max = 1.0;     ui_step = 1.0;  ui_label = "Display's Resolution: 4K | 8K";> = 0.0;
 uniform float HCRT_LCD_SUBPIXEL                    <ui_type = "drag"; ui_min = 0.0; ui_max = 1.0;     ui_step = 1.0;  ui_label = "Display's Subpixel Layout: RGB | BGR";> = 0.0;
 
 uniform float HCRT_CRT_SCREEN_TYPE                 <ui_type = "drag"; ui_min = 0.0; ui_max = 3.0;     ui_step = 1.0;  ui_label = "Screen Type: APERTURE GRILLE | SHADOW MASK | SLOT MASK";> = 0.0;
 uniform float HCRT_CRT_RESOLUTION                  <ui_type = "drag"; ui_min = 0.0; ui_max = 3.0;     ui_step = 1.0;  ui_label = "Resolution: 300TVL | 600TVL | 800TVL | 1000TVL";> = 1.0;
-uniform float HCRT_CRT_COLOUR_SYSTEM               <ui_type = "drag"; ui_min = 0.0; ui_max = 3.0;     ui_step = 1.0;  ui_label = "Colour System: r709 | PAL | NTSC-U | NTSC-J";> = 2.0;
+uniform float HCRT_CRT_COLOUR_SYSTEM               <ui_type = "drag"; ui_min = 0.0; ui_max = 3.0;     ui_step = 1.0;  ui_label = "Colour System: r709 | PAL | NTSC-U | NTSC-J";> = 3.0;
 uniform float HCRT_WHITE_TEMPERATURE               <ui_type = "drag"; ui_min = -5000.0; ui_max = 12000.0;     ui_step = 100.0;  ui_label = "White Temperature Offset (Kelvin)";> = 0.0;
-uniform float HCRT_BRIGHTNESS                      <ui_type = "drag"; ui_min = -1.0; ui_max = 1.0;    ui_step = 0.01;  ui_label = "Brightness";> = 0.0;
+uniform float HCRT_BRIGHTNESS                      <ui_type = "drag"; ui_min = -1.0; ui_max = 1.0;    ui_step = 0.01;  ui_label = "Brightness";> = 0.15;
 uniform float HCRT_CONTRAST                        <ui_type = "drag"; ui_min = -1.0; ui_max = 1.0;    ui_step = 0.01;  ui_label = "Contrast";> = 0.0;
 uniform float HCRT_SATURATION                      <ui_type = "drag"; ui_min = -1.0; ui_max = 1.0;    ui_step = 0.01;  ui_label = "Saturation";> = 0.0;
 uniform float HCRT_GAMMA_IN                        <ui_type = "drag"; ui_min = -1.0; ui_max = 1.0;    ui_step = 0.01;  ui_label = "Gamma In";> = 0.0;
@@ -106,18 +106,18 @@ uniform float HCRT_PIN_AMP                         <ui_type = "drag"; ui_min = -
 
 uniform float HCRT_V_SIZE                          <ui_type = "drag"; ui_min = 0.0; ui_max = 1.0;     ui_step = 0.01;  ui_label = "Vertical Size";> = 1.0;
 uniform float HCRT_V_CENT                          <ui_type = "drag"; ui_min = -200.0; ui_max = 200.0;ui_step = 1.0;   ui_label = "Vertical Center";> = 0.0;
-uniform float HCRT_RED_VERTICAL_CONVERGENCE        <ui_type = "drag"; ui_min = -10.0 ; ui_max = 10.0; ui_step = 0.01;  ui_label = "Red Vertical Deconvergence";> = 0.0;
+uniform float HCRT_RED_VERTICAL_CONVERGENCE        <ui_type = "drag"; ui_min = -10.0 ; ui_max = 10.0; ui_step = 0.01;  ui_label = "Red Vertical Deconvergence";> = -0.14;
 uniform float HCRT_GREEN_VERTICAL_CONVERGENCE      <ui_type = "drag"; ui_min = -10.0 ; ui_max = 10.0; ui_step = 0.01;  ui_label = "Green Vertical Deconvergence";> = 0.0;
 uniform float HCRT_BLUE_VERTICAL_CONVERGENCE       <ui_type = "drag"; ui_min = -10.0 ; ui_max = 10.0; ui_step = 0.01;  ui_label = "Blue Vertical Deconvergence";> = 0.0;
-uniform float HCRT_RED_SCANLINE_MIN                <ui_type = "drag"; ui_min = 0.0; ui_max = 1.0;     ui_step = 0.01;  ui_label = "Red Scanline Min";> = 0.50;
-uniform float HCRT_RED_SCANLINE_MAX                <ui_type = "drag"; ui_min = 0.0; ui_max = 1.0;     ui_step = 0.01;  ui_label = "Red Scanline Max";> = 1.0;
-uniform float HCRT_RED_SCANLINE_ATTACK             <ui_type = "drag"; ui_min = 0.0; ui_max = 1.0;     ui_step = 0.01;  ui_label = "Red Scanline Attack";> = 0.20;
-uniform float HCRT_GREEN_SCANLINE_MIN              <ui_type = "drag"; ui_min = 0.0; ui_max = 1.0;     ui_step = 0.01;  ui_label = "Green Scanline Min";> = 0.50;
-uniform float HCRT_GREEN_SCANLINE_MAX              <ui_type = "drag"; ui_min = 0.0; ui_max = 1.0;     ui_step = 0.01;  ui_label = "Green Scanline Max";> = 1.0;
-uniform float HCRT_GREEN_SCANLINE_ATTACK           <ui_type = "drag"; ui_min = 0.0; ui_max = 1.0;     ui_step = 0.01;  ui_label = "Green Scanline Attack";> = 0.20;
-uniform float HCRT_BLUE_SCANLINE_MIN               <ui_type = "drag"; ui_min = 0.0; ui_max = 1.0;     ui_step = 0.01;  ui_label = "Blue Scanline Min";> = 0.50;
+uniform float HCRT_RED_SCANLINE_MIN                <ui_type = "drag"; ui_min = 0.0; ui_max = 1.0;     ui_step = 0.01;  ui_label = "Red Scanline Min";> = 0.55;
+uniform float HCRT_RED_SCANLINE_MAX                <ui_type = "drag"; ui_min = 0.0; ui_max = 1.0;     ui_step = 0.01;  ui_label = "Red Scanline Max";> = 0.82;
+uniform float HCRT_RED_SCANLINE_ATTACK             <ui_type = "drag"; ui_min = 0.0; ui_max = 1.0;     ui_step = 0.01;  ui_label = "Red Scanline Attack";> = 0.65;
+uniform float HCRT_GREEN_SCANLINE_MIN              <ui_type = "drag"; ui_min = 0.0; ui_max = 1.0;     ui_step = 0.01;  ui_label = "Green Scanline Min";> = 0.55;
+uniform float HCRT_GREEN_SCANLINE_MAX              <ui_type = "drag"; ui_min = 0.0; ui_max = 1.0;     ui_step = 0.01;  ui_label = "Green Scanline Max";> = 0.90;
+uniform float HCRT_GREEN_SCANLINE_ATTACK           <ui_type = "drag"; ui_min = 0.0; ui_max = 1.0;     ui_step = 0.01;  ui_label = "Green Scanline Attack";> = 0.13;
+uniform float HCRT_BLUE_SCANLINE_MIN               <ui_type = "drag"; ui_min = 0.0; ui_max = 1.0;     ui_step = 0.01;  ui_label = "Blue Scanline Min";> = 0.72;
 uniform float HCRT_BLUE_SCANLINE_MAX               <ui_type = "drag"; ui_min = 0.0; ui_max = 1.0;     ui_step = 0.01;  ui_label = "Blue Scanline Max";> = 1.0;
-uniform float HCRT_BLUE_SCANLINE_ATTACK            <ui_type = "drag"; ui_min = 0.0; ui_max = 1.0;     ui_step = 0.01;  ui_label = "Blue Scanline Attack";> = 0.20;
+uniform float HCRT_BLUE_SCANLINE_ATTACK            <ui_type = "drag"; ui_min = 0.0; ui_max = 1.0;     ui_step = 0.01;  ui_label = "Blue Scanline Attack";> = 0.65;
 
 uniform float HCRT_H_SIZE                          <ui_type = "drag"; ui_min = 0.0; ui_max = 1.0;     ui_step = 0.01;  ui_label = "Horizontal Size";> = 1.0;
 uniform float HCRT_H_CENT                          <ui_type = "drag"; ui_min = -200.0; ui_max = 200.0;ui_step = 1.0;   ui_label = "Horizontal Center";> = 0.0;
@@ -125,11 +125,11 @@ uniform float HCRT_RED_HORIZONTAL_CONVERGENCE      <ui_type = "drag"; ui_min = -
 uniform float HCRT_GREEN_HORIZONTAL_CONVERGENCE    <ui_type = "drag"; ui_min = -10.0 ; ui_max = 10.0; ui_step = 0.01;  ui_label = "Green Horizontal Deconvergence";> = 0.0;
 uniform float HCRT_BLUE_HORIZONTAL_CONVERGENCE     <ui_type = "drag"; ui_min = -10.0 ; ui_max = 10.0; ui_step = 0.01;  ui_label = "Blue Horizontal Deconvergence";> = 0.0;
 uniform float HCRT_RED_BEAM_SHARPNESS              <ui_type = "drag"; ui_min = 0.0; ui_max = 5.0;     ui_step = 0.05;  ui_label = "Red Beam Sharpness";> = 1.75;
-uniform float HCRT_RED_BEAM_ATTACK                 <ui_type = "drag"; ui_min = 0.0; ui_max = 2.0;     ui_step = 0.01;  ui_label = "Red Beam Attack";> = 0.50;
-uniform float HCRT_GREEN_BEAM_SHARPNESS            <ui_type = "drag"; ui_min = 0.0; ui_max = 5.0;     ui_step = 0.05;  ui_label = "Green Beam Sharpness";> = 1.75;
-uniform float HCRT_GREEN_BEAM_ATTACK               <ui_type = "drag"; ui_min = 0.0; ui_max = 2.0;     ui_step = 0.01;  ui_label = "Green Beam Attack";> = 0.50;
-uniform float HCRT_BLUE_BEAM_SHARPNESS             <ui_type = "drag"; ui_min = 0.0; ui_max = 5.0;     ui_step = 0.05;  ui_label = "Blue Beam Sharpness";> = 1.75;
-uniform float HCRT_BLUE_BEAM_ATTACK                <ui_type = "drag"; ui_min = 0.0; ui_max = 2.0;     ui_step = 0.01;  ui_label = "Blue Beam Attack";> = 0.50;
+uniform float HCRT_RED_BEAM_ATTACK                 <ui_type = "drag"; ui_min = 0.0; ui_max = 2.0;     ui_step = 0.01;  ui_label = "Red Beam Attack";> = 0.72;
+uniform float HCRT_GREEN_BEAM_SHARPNESS            <ui_type = "drag"; ui_min = 0.0; ui_max = 5.0;     ui_step = 0.05;  ui_label = "Green Beam Sharpness";> = 1.60;
+uniform float HCRT_GREEN_BEAM_ATTACK               <ui_type = "drag"; ui_min = 0.0; ui_max = 2.0;     ui_step = 0.01;  ui_label = "Green Beam Attack";> = 0.80;
+uniform float HCRT_BLUE_BEAM_SHARPNESS             <ui_type = "drag"; ui_min = 0.0; ui_max = 5.0;     ui_step = 0.05;  ui_label = "Blue Beam Sharpness";> = 1.90;
+uniform float HCRT_BLUE_BEAM_ATTACK                <ui_type = "drag"; ui_min = 0.0; ui_max = 2.0;     ui_step = 0.01;  ui_label = "Blue Beam Attack";> = 0.45;
 
 
 #define COMPAT_TEXTURE(c, d) tex2D(c, d)
