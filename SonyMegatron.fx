@@ -135,9 +135,13 @@ uniform float HCRT_BLUE_BEAM_ATTACK                <ui_type = "drag"; ui_min = 0
 
 #define COMPAT_TEXTURE(c, d) tex2D(c, d)
 
+#ifndef CRT_WIDTH
+#define CRT_WIDTH    BUFFER_WIDTH
+#endif
 
-#define CRT_WIDTH    3840.0f
+#ifndef CRT_HEIGHT
 #define CRT_HEIGHT   240.0f
+#endif
 
 texture SourceTexture { Width = CRT_WIDTH; Height = CRT_HEIGHT; Format = RGBA8; };
 sampler Source {Texture = SourceTexture; MagFilter = POINT; MinFilter = POINT; MipFilter = POINT; };
