@@ -85,22 +85,23 @@
 
 
 uniform float HCRT_HDR                             <ui_type = "drag"; ui_min = 0.0; ui_max = 1.0;     ui_step = 1.0;  ui_label = "SDR | HDR";> = 1.0;
-uniform float HCRT_COLOUR_ACCURATE                 <ui_type = "drag"; ui_min = 0.0; ui_max = 1.0;     ui_step = 1.0;  ui_label = "Mask Accurate/Colour Accurate";> = 1.0;
+uniform float HCRT_MAX_NITS                        <ui_type = "drag"; ui_min = 0.0; ui_max = 10000.0; ui_step = 10.0; ui_label = "HDR: Display's Peak Luminance";> = 1000.0;
+uniform float HCRT_PAPER_WHITE_NITS                <ui_type = "drag"; ui_min = 0.0; ui_max = 10000.0; ui_step = 10.0; ui_label = "HDR: Display's Paper White Luminance";> = 200.0;
+uniform float HCRT_EXPAND_GAMUT                    <ui_type = "drag"; ui_min = 0.0; ui_max = 1.0;     ui_step = 1.0;  ui_label = "HDR: Original/Vivid";> = 1.0;
 uniform float HCRT_OUTPUT_COLOUR_SPACE             <ui_type = "drag"; ui_min = 0.0; ui_max = 2.0;     ui_step = 1.0;  ui_label = "SDR: Display's Colour Space: r709 | sRGB | DCI-P3";> = 1.0;
 uniform float HCRT_R709_GAMMA_OUT                  <ui_type = "drag"; ui_min = 1.0; ui_max = 5.0;     ui_step = 0.01; ui_label = "SDR: r709 Gamma";> = 2.22;
 uniform float HCRT_SRGB_GAMMA_OUT                  <ui_type = "drag"; ui_min = 1.0; ui_max = 5.0;     ui_step = 0.01; ui_label = "SDR: sRGB Gamma";> = 2.4;
 uniform float HCRT_P3_GAMMA_OUT                    <ui_type = "drag"; ui_min = 1.0; ui_max = 5.0;     ui_step = 0.01; ui_label = "SDR: DCI-P3 Gamma";> = 2.6;
 uniform float HCRT_R709_GAMMA_CUTOFF               <ui_type = "drag"; ui_min = 0.0; ui_max = 100.0;   ui_step = 1.0;  ui_label = "SDR: r709 Gamma Cutoff (x1000)";> = 1.0;
 uniform float HCRT_SRGB_GAMMA_CUTOFF               <ui_type = "drag"; ui_min = 0.0; ui_max = 100.0;   ui_step = 1.0;  ui_label = "SDR: sRGB Gamma Cutoff (x1000)";> = 1.0;
-uniform float HCRT_MAX_NITS                        <ui_type = "drag"; ui_min = 0.0; ui_max = 10000.0; ui_step = 10.0; ui_label = "HDR: Display's Peak Luminance";> = 1000.0;
-uniform float HCRT_PAPER_WHITE_NITS                <ui_type = "drag"; ui_min = 0.0; ui_max = 10000.0; ui_step = 10.0; ui_label = "HDR: Display's Paper White Luminance";> = 200.0;
-uniform float HCRT_EXPAND_GAMUT                    <ui_type = "drag"; ui_min = 0.0; ui_max = 1.0;     ui_step = 1.0;  ui_label = "HDR: Original/Vivid";> = 1.0;
 uniform float HCRT_LCD_RESOLUTION                  <ui_type = "drag"; ui_min = 0.0; ui_max = 2.0;     ui_step = 1.0;  ui_label = "Display's Resolution: 1080p | 4K | 8K";> = 1.0;
 uniform float HCRT_LCD_SUBPIXEL                    <ui_type = "drag"; ui_min = 0.0; ui_max = 2.0;     ui_step = 1.0;  ui_label = "Display's Subpixel Layout: RGB | RWBG (OLED) | BGR";> = 0.0;
+uniform float HCRT_COLOUR_ACCURATE                 <ui_type = "drag"; ui_min = 0.0; ui_max = 1.0;     ui_step = 1.0;  ui_label = "Mask Accurate/Colour Accurate";> = 1.0;
 
 uniform float HCRT_CRT_SCREEN_TYPE                 <ui_type = "drag"; ui_min = 0.0; ui_max = 2.0;     ui_step = 1.0;  ui_label = "Screen Type: APERTURE GRILLE | SHADOW MASK | SLOT MASK";> = 0.0;
 uniform float HCRT_CRT_RESOLUTION                  <ui_type = "drag"; ui_min = 0.0; ui_max = 3.0;     ui_step = 1.0;  ui_label = "Resolution: 300TVL | 600TVL | 800TVL | 1000TVL";> = 1.0;
 uniform float HCRT_CRT_COLOUR_SYSTEM               <ui_type = "drag"; ui_min = 0.0; ui_max = 3.0;     ui_step = 1.0;  ui_label = "Colour System: r709 | PAL | NTSC-U | NTSC-J";> = 3.0;
+uniform float HCRT_CRT_PHOSPHOR_SET                <ui_type = "drag"; ui_min = 0.0; ui_max = 5.0;     ui_step = 1.0;  ui_label = "Phosphors: NONE | P22-J | P22-80 | P22-90 | RPTV | 1953";> = 0.0;
 uniform float HCRT_WHITE_TEMPERATURE_D65           <ui_type = "drag"; ui_min = 0.0; ui_max = 18500.0; ui_step = 100.0; ui_label = "D65 White Temperature (Kelvin)";> = 6504.0;
 uniform float HCRT_WHITE_TEMPERATURE_D93           <ui_type = "drag"; ui_min = 0.0; ui_max = 18500.0; ui_step = 100.0; ui_label = "D93 White Temperature (Kelvin)";> = 9305.0;
 uniform float HCRT_BRIGHTNESS                      <ui_type = "drag"; ui_min = -1.0; ui_max = 1.0;    ui_step = 0.01;  ui_label = "Brightness";> = 0.0;
@@ -1164,6 +1165,7 @@ float4 mod(float4 x, float4 y)
 #define k1000TVL   3
 
 #define kColourSystems  4
+#define kPhosphorSets   5
 
 #define kD50            5003.0f
 #define kD55            5503.0f
@@ -1186,12 +1188,47 @@ static const float3x3 kNTSC_to_XYZ = float3x3(
    0.212376f, 0.701060f, 0.086564f,
    0.018739f, 0.111934f, 0.958385f);
 
+// Phosphor Sets - These override the colour standards above when used
+
+// NTSC-J P22
+static const float3x3 kNTSCJ_P22_to_XYZ = float3x3(
+   0.458432f, 0.309549f, 0.182474f,
+   0.256722f, 0.668848f, 0.074430f,
+   0.018337f, 0.127136f, 0.943584f);
+
+//P22 (80’s)
+static const float3x3 kP2280_to_XYZ = float3x3(
+   0.460844f, 0.307613f, 0.181910f,
+   0.244311f, 0.676311f, 0.079378f,
+   0.007123f, 0.106901f, 0.975034f);
+
+//P22 (90’s/tinted phosphors)
+static const float3x3 kP2290_to_XYZ = float3x3(
+   0.404151f, 0.354887f, 0.191418f,
+   0.201984f, 0.714530f, 0.083485f,
+   0.000607f, 0.062960f, 1.025491f);
+
+//RPTV (late 90’s/early 00’s)
+static const float3x3 kRPTV00_to_XYZ = float3x3(
+   0.331718f, 0.429476f, 0.189261f,
+   0.173634f, 0.738044f, 0.088322f,
+   0.012958f, 0.091941f, 0.984159f);
+
+//  NTSC-FCC 1953 Standard Phosphor
+static const float3x3 k1953_to_XYZ = float3x3(
+   0.588010f, 0.179133f, 0.183224f,
+   0.289661f, 0.605640f, 0.104699f,
+   0.000000f, 0.068241f, 1.020817f);
+
+// Output Colour Standards
+
 static const float3x3 kXYZ_to_709 = float3x3(
     3.240970f, -1.537383f, -0.498611f,
    -0.969244f,  1.875968f,  0.041555f,
     0.055630f, -0.203977f,  1.056972f);
 
-static const float3x3 kColourGamut[kColourSystems] = { k709_to_XYZ, kPAL_to_XYZ, kNTSC_to_XYZ, kNTSC_to_XYZ };
+static const float3x3 kStandardsColourGamut[kColourSystems] = { k709_to_XYZ, kPAL_to_XYZ, kNTSC_to_XYZ, kNTSC_to_XYZ };
+static const float3x3 kPhosphorColourGamut[kPhosphorSets] = { kNTSCJ_P22_to_XYZ, kP2280_to_XYZ, kP2290_to_XYZ, kRPTV00_to_XYZ, k1953_to_XYZ };
 
 //static const float kTemperatures[kColourSystems] = { kD65, kD65, kD65, kD93 }; 
 
@@ -1328,14 +1365,15 @@ float3 BrightnessContrastSaturation(const float3 xyz)
 float3 ColourGrade(const float3 colour)
 {
    const uint colour_system      = uint(HCRT_CRT_COLOUR_SYSTEM);
+   const uint phosphor_set       = uint(HCRT_CRT_PHOSPHOR_SET);
 
    const float temperature[kColourSystems] = { HCRT_WHITE_TEMPERATURE_D65, HCRT_WHITE_TEMPERATURE_D65, HCRT_WHITE_TEMPERATURE_D65, HCRT_WHITE_TEMPERATURE_D93 };
 
    const float3 white_point      = WhiteBalance(temperature[colour_system], colour);
 
-   const float3 _linear          = r601r709ToLinear(white_point); //pow(white_point, ((1.0f / 0.45f) + HCRT_GAMMA_IN).xxx);
+   const float3 _linear          = pow(white_point, ((1.0f / 0.45f) + HCRT_GAMMA_IN).xxx); // r601r709ToLinear(white_point); //
 
-   const float3 xyz              = mul(kColourGamut[colour_system], _linear);
+   const float3 xyz              = phosphor_set == 0 ? mul(kStandardsColourGamut[colour_system], _linear) : mul(kPhosphorColourGamut[phosphor_set - 1], _linear);
 
    const float3 graded           = BrightnessContrastSaturation(xyz); 
 
