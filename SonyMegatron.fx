@@ -1371,7 +1371,7 @@ float3 ColourGrade(const float3 colour)
 
    const float3 white_point      = WhiteBalance(temperature[colour_system], colour);
 
-   const float3 _linear          = pow(white_point, ((1.0f / 0.45f) + HCRT_GAMMA_IN).xxx); // r601r709ToLinear(white_point); //
+   const float3 _linear          = pow(white_point, (HCRT_GAMMA_IN).xxx); // r601r709ToLinear(white_point); //
 
    const float3 xyz              = phosphor_set == 0 ? mul(kStandardsColourGamut[colour_system], _linear) : mul(kPhosphorColourGamut[phosphor_set - 1], _linear);
 
